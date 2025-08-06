@@ -90,6 +90,7 @@ function M.expand()
   local current_pos = math.max(1, cursor_col+1-#keyword)
   local flag = false
   while #line_content >= current_pos+#keyword-1 do
+    vim.notify("PresetExpand: Trying substring '" .. string.sub(line_content, current_pos, current_pos+#keyword-1)), vim.log.levels.WARN)
     if #keyword == #string.match(keyword, string.sub(line_content, current_pos, current_pos+#keyword-1)) then
       flag = true
       break
