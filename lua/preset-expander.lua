@@ -38,8 +38,9 @@ local function split_into_lines(str)
   str = str:gsub('\n$', '')
   for line in str:gmatch("([^\n]*)") do
     line:sub(1, -3)
-    --print(line)
-    table.insert(lines, line)
+    if #line != 0 do
+      table.insert(lines, line)
+    end
   end
   return lines
 end
