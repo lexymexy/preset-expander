@@ -88,14 +88,22 @@ function M.expand()
   local start_col, end_col
   local pattern = vim.pesc(keyword)
   local current_pos = math.max(1, cursor_col+1-#keyword)
-  local s, e = string.find(line_content, pattern, current_pos)
+  local flag = false
+  while #line_content >= current_pos+#keyword-1 do
+    if #keyword == #string.match(keyword, string.sub(line_content, current_pos, current_pos+#keyword-1)) then
+      flag = true
+      break
+    end
+  end
 
-  if not s then
+  --local s, e = string.find(line_content, pattern, current_pos)
+
+  if not flag then
     vim.notify("PresetExpand: Could not locate keyword '" .. keyword .. "' under cursor.", vim.log.levels.ERROR)
     return
   end
-  start_col = s - 1 -- 0-indexed start
-  end_col = e       -- 0-indexed end
+  start_col = current_pos - 1 -- 0-indexed start
+  end_col = current_pos+#keyword-1       -- 0-indexed end
 
   -- 6. Prepare the replacement text, preserving indentation.
   local new_lines = split_into_lines(content)
