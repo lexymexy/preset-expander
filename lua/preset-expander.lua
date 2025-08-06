@@ -90,7 +90,6 @@ function M.expand()
   local current_pos = math.max(1, cursor_col+1-#keyword)
   local flag = true
   while #line_content >= current_pos+#keyword-1 do
-    vim.notify("PresetExpand: Trying substring '" .. string.sub(line_content, current_pos, current_pos+#keyword-1)), vim.log.levels.WARN)
     if #keyword == #string.match(keyword, string.sub(line_content, current_pos, current_pos+#keyword-1)) then
       flag = true
       break
@@ -100,7 +99,7 @@ function M.expand()
   --local s, e = string.find(line_content, pattern, current_pos)
 
   if not flag then
-    --vim.notify("PresetExpand: Could not locate keyword '" .. keyword .. "' under cursor.", vim.log.levels.ERROR)
+    vim.notify("PresetExpand: Could not locate keyword '" .. keyword .. "' under cursor.", vim.log.levels.ERROR)
     return
   end
   start_col = current_pos - 1 -- 0-indexed start
