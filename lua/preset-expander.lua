@@ -37,7 +37,7 @@ local function split_into_lines(str)
   str = str:gsub('\r\n', '\n'):gsub('\r', '\n')
   str = str:gsub('\n$', '')
   for line in str:gmatch("([^\n]*)") do
-    line:gsub('\n', '')
+    line:sub(1, -2)
     table.insert(lines, line)
   end
   return lines
