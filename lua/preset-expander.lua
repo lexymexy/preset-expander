@@ -86,9 +86,9 @@ function M.expand()
 
   -- Find the specific instance of the keyword the cursor is on using word boundaries.
   local start_col, end_col
-  local pattern = "\\<" .. vim.pesc(keyword) .. "\\>"
+  local pattern = vim.pesc(keyword)
   local current_pos = math.max(1, cursor_col+1-#keyword)
-  local s, e = string.find(line_content, keyword, current_pos)
+  local s, e = string.find(line_content, pattern, current_pos)
 
   if not s then
     vim.notify("PresetExpand: Could not locate keyword '" .. keyword .. "' under cursor.", vim.log.levels.ERROR)
