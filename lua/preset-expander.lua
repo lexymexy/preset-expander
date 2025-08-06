@@ -37,8 +37,8 @@ local function split_into_lines(str)
   str = str:gsub('\r\n', '\n'):gsub('\r', '\n')
   str = str:gsub('\n$', '')
   for line in str:gmatch("([^\n]*)") do
-    line:sub(1, -2)
-    print(line)
+    line:sub(1, -3)
+    --print(line)
     table.insert(lines, line)
   end
   return lines
@@ -93,9 +93,12 @@ function M.expand()
   local current_pos = math.max(1, cursor_col+1-#keyword)
   local flag = true
   while #line_content >= current_pos+#keyword-1 do
-    if #keyword == #string.match(keyword, string.sub(line_content, current_pos, current_pos+#keyword-1)) then
-      flag = true
-      break
+    match = match(keyword, string.sub(line_content, current_pos, current_pos+#keyword-1))
+    if match then
+      if #keyword == #match then
+        flag = true
+        break
+      end
     end
   end
 
