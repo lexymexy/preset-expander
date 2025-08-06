@@ -101,6 +101,7 @@ function M.expand()
         break
       end
     end
+    current_pos += 1
   end
 
   --local s, e = string.find(line_content, pattern, current_pos)
@@ -124,10 +125,6 @@ function M.expand()
         new_lines[i] = indent .. new_lines[i]
       end
     end
-  end
-
-  for i = 1, #new_lines do
-    print(new_lines[i], #new_lines[i])
   end
 
   -- 7. Perform the replacement in the buffer.
