@@ -38,7 +38,7 @@ local function split_into_lines(str)
   str = str:gsub('\n$', '')
   for line in str:gmatch("([^\n]*)") do
     line:sub(1, -3)
-    if #line != 0 do
+    if #line != 0 then
       table.insert(lines, line)
     end
   end
