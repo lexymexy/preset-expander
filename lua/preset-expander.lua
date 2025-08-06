@@ -125,6 +125,10 @@ function M.expand()
     end
   end
 
+  for i = 1, #new_lines do
+    print(new_lines[i], #new_lines[i])
+  end
+
   -- 7. Perform the replacement in the buffer.
   vim.api.nvim_buf_set_text(
     0,           -- buffer handle (0 for current)
