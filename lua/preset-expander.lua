@@ -1,4 +1,4 @@
--- Save this file as: ~/.config/nvim/lua/preset_expand.lua
+-- Save this file as: ~/.config/nvim/lua/preset_expander.lua
 
 local M = {}
 
@@ -16,7 +16,7 @@ local M = {}
   │   ├── python_class
   │   └── html_boilerplate
   └── lua/
-      └── preset_expand.lua
+      └── preset_expander.lua
 --]]
 local config = {
   presets_dir = vim.fn.stdpath('config') .. '/presets'
