@@ -101,7 +101,7 @@ function M.expand()
         break
       end
     end
-    current_pos += 1
+    current_pos = current_pos + 1
   end
 
   --local s, e = string.find(line_content, pattern, current_pos)
