@@ -93,7 +93,7 @@ function M.expand()
   local current_pos = math.max(1, cursor_col+1-#keyword)
   local flag = true
   while #line_content >= current_pos+#keyword-1 do
-    temp = match(keyword, string.sub(line_content, current_pos, current_pos+#keyword-1))
+    temp = string.match(keyword, string.sub(line_content, current_pos, current_pos+#keyword-1))
     if temp then
       if #keyword == #temp then
         flag = true
