@@ -35,6 +35,7 @@ local function split_into_lines(str)
     local lines = {}
     -- Normalize line endings to \n
     str = str:gsub('\r\n', '\n'):gsub('\r', '\n')
+    str = str:gsub('\n$', '')
     for line in str:gmatch("([^\n]*)") do
         table.insert(lines, line)
     end
