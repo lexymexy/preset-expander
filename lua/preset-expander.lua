@@ -88,7 +88,7 @@ function M.expand()
   local start_col, end_col
   local pattern = vim.pesc(keyword)
   local current_pos = math.max(1, cursor_col+1-#keyword)
-  local flag = false
+  local flag = true
   while #line_content >= current_pos+#keyword-1 do
     vim.notify("PresetExpand: Trying substring '" .. string.sub(line_content, current_pos, current_pos+#keyword-1)), vim.log.levels.WARN)
     if #keyword == #string.match(keyword, string.sub(line_content, current_pos, current_pos+#keyword-1)) then
