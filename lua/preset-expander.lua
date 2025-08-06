@@ -100,7 +100,7 @@ function M.expand()
     current_pos = e + 1
   end
 
-  if not start_col then
+  if not s then
     vim.notify("PresetExpand: Could not locate keyword '" .. keyword .. "' under cursor.", vim.log.levels.ERROR)
     return
   end
