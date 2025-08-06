@@ -32,14 +32,15 @@ end
 --- @param str string The input string.
 --- @return table A table of strings, one for each line.
 local function split_into_lines(str)
-    local lines = {}
-    -- Normalize line endings to \n
-    str = str:gsub('\r\n', '\n'):gsub('\r', '\n')
-    str = str:gsub('\n$', '')
-    for line in str:gmatch("([^\n]*)") do
-        table.insert(lines, line)
-    end
-    return lines
+  local lines = {}
+  -- Normalize line endings to \n
+  str = str:gsub('\r\n', '\n'):gsub('\r', '\n')
+  str = str:gsub('\n$', '')
+  for line in str:gmatch("([^\n]*)") do
+    line:gsub('\n', '')
+    table.insert(lines, line)
+  end
+  return lines
 end
 
 --- Main function to expand the preset.
