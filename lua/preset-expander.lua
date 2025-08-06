@@ -24,7 +24,7 @@ local function read_file(path)
     return nil
   end
   local content = file:read("*a")
-  file:close()
+  io.close(file)
   return content
 end
 
