@@ -6,7 +6,7 @@ vim.api.nvim_create_user_command(
   'PresetExpand',
   function()
     -- Calls the main function from your lua module
-    require('preset_expander').expand()
+    require('preset-expander').expand()
   end,
   {
     nargs = 0,
