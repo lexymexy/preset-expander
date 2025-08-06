@@ -8,18 +8,11 @@ local M = {}
   ==============================================================================
   You can change the directory where your presets are stored.
   The default is '~/.config/nvim/presets'.
-  
-  Example preset file structure:
-  ~/.config/nvim/
-  ├── presets/
-  │   ├── react_component
-  │   ├── python_class
-  │   └── html_boilerplate
-  └── lua/
-      └── preset_expander.lua
 --]]
 local config = {
-  presets_dir = vim.fn.stdpath('config') .. '/presets'
+  -- VIM-PATCH: Explicitly expand the path to handle '~' correctly.
+  -- This makes path resolution more robust.
+  presets_dir = vim.fn.expand(vim.fn.stdpath('config') .. '/presets')
 }
 
 --- Reads the content of a file.
@@ -74,7 +67,7 @@ function M.expand()
   -- 3. Find the preset file. The filename must match the keyword exactly.
   local preset_path = preset_dir .. '/' .. keyword
   if vim.fn.filereadable(preset_path) ~= 1 then
-    vim.notify("PresetExpand: Preset file not found for keyword: '" .. keyword .. "'", vim.log.levels.WARN)
+    vim.notify("PresetExpand: Preset not found for keyword: '" .. keyword .. "'", vim.log.levels.WARN)
     vim.notify("PresetExpand: Looked for: " .. preset_path, vim.log.levels.INFO)
     return
   end
