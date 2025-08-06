@@ -87,23 +87,15 @@ function M.expand()
   -- Find the specific instance of the keyword the cursor is on using word boundaries.
   local start_col, end_col
   local pattern = "\\<" .. vim.pesc(keyword) .. "\\>"
-  local current_pos = 1
-  while true do
-    local s, e = string.find(line_content, pattern, current_pos)
-    if not s then break end
-    -- Check if the cursor is within the bounds of this match
-    if cursor_col >= s - 1 and cursor_col < e then
-      start_col = s - 1 -- 0-indexed start
-      end_col = e       -- 0-indexed end
-      break
-    end
-    current_pos = e + 1
-  end
+  local current_pos = math.max(1, cursor_col+1-#keyword)
+  local s, e = string.find(line_content, pattern, current_pos)
 
   if not s then
     vim.notify("PresetExpand: Could not locate keyword '" .. keyword .. "' under cursor.", vim.log.levels.ERROR)
     return
   end
+  start_col = s - 1 -- 0-indexed start
+  end_col = e       -- 0-indexed end
 
   -- 6. Prepare the replacement text, preserving indentation.
   local new_lines = split_into_lines(content)
