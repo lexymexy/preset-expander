@@ -100,7 +100,7 @@ function M.expand()
   --local s, e = string.find(line_content, pattern, current_pos)
 
   if not flag then
-    vim.notify("PresetExpand: Could not locate keyword '" .. keyword .. "' under cursor.", vim.log.levels.ERROR)
+    --vim.notify("PresetExpand: Could not locate keyword '" .. keyword .. "' under cursor.", vim.log.levels.ERROR)
     return
   end
   start_col = current_pos - 1 -- 0-indexed start
