@@ -1,6 +1,10 @@
 # preset-expander
 Nvim plugin that allows you to write and reuse snippets of code (Presets)
 
+## Installing
+### Lazy.nvim
+`return { "lexymexy/preset-expander" }`
+
 ## Usage
 1. Add preset files in your-nvim-config-dir/presets (You can change the directory in config.presets_dir)
    The file name functions as a keyword for the preset.
