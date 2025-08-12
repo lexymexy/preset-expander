@@ -1,11 +1,6 @@
--- Save this file as: ~/.config/nvim/plugin/preset_expand.lua
-
--- This file is loaded automatically by Neovim and sets up the command.
-
 vim.api.nvim_create_user_command(
   'PresetExpand',
   function()
-    -- Calls the main function from your lua module
     require('preset-expander').expand()
   end,
   {
